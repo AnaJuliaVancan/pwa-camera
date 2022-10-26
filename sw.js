@@ -1,12 +1,9 @@
-let cacheName = "PWA-CAM";
-let filesToCache = [
-    "/index.html", 
-    "/css/style.css", 
-    "/js/app.js"
+let cacheName = "pwa-cam";
+let filesToCache = [ "/", "/index.html", 
+    "/css/style.css", "/js/app.js"
 ];
 
-/* inicializando a service worker e fazendo o 
-download do conteúdo da aplicação */
+
 self.addEventListener("install", (e) => {
   e.waitUntil(
     caches.open(cacheName).then(function (cache) {
@@ -15,7 +12,7 @@ self.addEventListener("install", (e) => {
   );
 });
 
-/* disponibilizando o conteudo quando estiver offline */
+
 self.addEventListener("fetch", (e) => {
     const req = e.request;
     const url = new URL(req.url);
@@ -32,7 +29,7 @@ async function cacheFirst(req) {
   }
   
   async function networkFirst(req) {
-    const cache = await caches.open('PWA-CAM');
+    const cache = await caches.open('pwa-cam');
     try {
       const res = await fetch(req);
       cache.put(req, res.clone());

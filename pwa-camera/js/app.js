@@ -1,11 +1,11 @@
 window.addEventListener('load', e => {
-    "use strict";//restrito a funcionar em navegadores comES6 >
+    "use strict";
     if("serviceWorker" in navigator){
         navigator.serviceWorker.register("./sw.js");
     }
 }); 
 
-var constraints = {vdeo: {facingMode:"user"}, audio: false}
+var constraints = {video: {facingMode:"user"}, audio: false}
 
 const cameraView = document.querySelector("#camera--view")
 cameraOutput = document.querySelector("#camera--output")
@@ -14,7 +14,7 @@ cameraTrigger = document.querySelector("#camera--trigger")
 
 function cameraStart(){
     navigator.mediaDevices
-    .getUserMedia(constrains)
+    .getUserMedia(constraints)
     .then(function(stream){
         track = stream.getTracks()[0];
         cameraView.srcObjects = stream;
